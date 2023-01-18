@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+---
+
+
+<article class="max-w-[1440px] mx-auto">
+{# ===========================   右側560pのメインコンテンツ ====================================================================================#}
+        <div class="max-w-[560px] my-20 mx-auto max-sm:px-3" id="grid-560px">
+        
+        <div> 
+                {{ content | safe }}
+        </div>
+        </div>
+        <script>
+                window.addEventListener('keydown', function(e) {
+            if(e.keyCode == 32 && e.target == document.body) {
+              e.preventDefault();
+            }
+          });
+        </script>
+        
+</article>

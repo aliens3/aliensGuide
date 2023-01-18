@@ -1,0 +1,45 @@
+.amplitude-playing #pause-icon{
+    display: block;
+  }
+  
+.amplitude-paused #pause-icon{
+    display: none;
+  }
+  
+.amplitude-paused #play-icon{
+    display: block;
+  }
+  
+.amplitude-playing #play-icon{
+    display: none;
+  }
+
+.amplitude-playback-speed-10 #speed10{
+    display: block;
+}
+.amplitude-playback-speed-15 #speed10{
+    display: none;
+}
+.amplitude-playback-speed-20 #speed10{
+    display: none;
+}
+
+.amplitude-playback-speed-10 #speed15{
+    display: none;
+}
+.amplitude-playback-speed-15 #speed15{
+    display: block;
+}
+.amplitude-playback-speed-20 #speed15{
+    display: none;
+}
+
+.amplitude-playback-speed-20 #speed20{
+    display: block;
+}
+.amplitude-playback-speed-15 #speed20{
+    display: none;
+}
+.amplitude-playback-speed-10 #speed20{
+    display: none;
+}

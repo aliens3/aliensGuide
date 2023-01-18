@@ -1,0 +1,225 @@
+
+/*  =======================  index.htmlのデザイン    ==========================================================================         */
+
+
+
+a:hover{
+    text-decoration: underline;
+}
+
+
+@keyframes spin {
+    to {
+        transform: rotate(15deg);
+    }
+}
+
+
+
+
+.artboard {
+    display: grid;
+    grid-gap: 0px;
+    /*grid-template-columns: repeat(auto-fit, 57px);*/
+    /*grid-template-columns: repeat(auto-fit, 35.7px);*//*357*/
+    /*grid-template-columns: repeat(auto-fit, 28px);*//*567*/
+    grid-template-columns: repeat(auto-fit, 24px);/**/
+    grid-auto-rows: minmax(min-content, max-content);
+    padding: 30px;
+    padding-right: 0px;
+}
+
+summary {
+    display: block;
+    cursor: pointer;
+    outline: 0; 
+  }
+  
+summary::-webkit-details-marker {
+      display: none;
+}
+
+  
+.tree-nav__item {
+    display: block;
+    color: rgb(7, 7, 7);
+    position: relative;
+}
+
+
+.tree-nav__item.is-expandable::before {
+    
+    content: "";
+    height: 100%;
+    left: 0.8rem;
+    position: absolute;
+    top: 2rem;
+    height: calc(100% - 2rem);
+}
+
+  .tree-nav__item.is-expandable[open]::before {
+    border-left: 1px solid #333;
+  }
+
+
+
+  .tree-nav__item .tree-nav__item {
+    margin-left: 2rem;
+  }
+  .tree-nav__item.is-expandable[open] > .tree-nav__item-title::before {
+    font-family: "ionicons";
+    transform: rotate(90deg);
+  }
+
+
+  .tree-nav__item.is-expandable > .tree-nav__item-title {
+    padding-left: 2rem;
+  }
+
+
+  .tree-nav__item.is-expandable > .tree-nav__item-title::before {
+    position: absolute;
+    will-change: transform;
+    transition: transform 300ms ease;
+    font-family: "ionicons";
+    content: "\f125";/*使うためにはioniconsのcdnが必要*/
+    left: 0;
+    top: -10px;
+    display: inline-block;
+    width: 1.6rem;
+    text-align: center;
+  }
+
+  
+  .tree-nav__item-title {
+    cursor: pointer;
+    display: block;
+    outline: 0;
+    line-height: 3.2rem;
+    margin-top: 0.35rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .tree-nav__item-title::-webkit-details-marker {
+    display: none;
+  }
+
+
+  @media not all and (min-width: 1024px) {
+    .max-lg\:hidden {
+        display: none;
+    }
+}
+
+  .rotate {
+    transform: rotate(72deg);
+  }
+  .u-title {
+    font-weight: normal;
+    font-size: 22px;
+  }
+  
+  .c-title {
+      font-weight: normal;
+      font-size: 18px;
+  }
+  
+  .s-title {
+    font-weight: normal;
+    font-size: 1rem;
+  }
+  
+  .home {
+      display: grid;
+      grid-template-columns: 630px 1fr 720px 1fr;
+  }
+  
+
+  
+  .home-content {
+      grid-column: 3 / 4;
+      margin: 2rem 0;
+      width: 680px;
+      padding: auto;
+  }
+  
+  h1 {
+    padding: 1rem 0;
+    color: black;
+  }
+  
+  :where(h1,h2,h3,h4,h5) {
+      line-height: calc(1em + 0.5rem);
+  }
+  
+  h2 {
+    font-size: 25px;
+  }
+  
+  h3,h4,h5 {
+      font-size: 1.4rem;
+  }
+  
+  h4,h5 {
+    font-size: 1.3rem;
+  
+  }
+
+
+  @media screen and (max-width: 1000px) {
+
+
+    .home {
+      display: flex;
+      padding: 4%;
+    }
+
+    .home-content {
+        margin: 0rem 0;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+    h3 {
+        font-size: 16px;
+    }
+
+    h4,h5 {
+        font-size: 16px;
+      
+      }
+
+      .u-title {
+        font-weight: normal;
+        font-size: 20px;
+      }
+      
+      .c-title {
+          font-weight: normal;
+          font-size: 16px;
+      }
+      
+      .s-title {
+        font-weight: normal;
+        font-size: 16px;
+      }
+
+      .tree-nav__item.is-expandable > .tree-nav__item-title::before {
+        top: -12.5px;
+        width: 0.8rem;
+      }
+
+      .tree-nav__item.is-expandable::before {
+        left: 0.4rem;
+      }
+
+      .tree-nav__item .tree-nav__item {
+        margin-left: 1.2rem;
+      }
+      .tree-nav__item.is-expandable > .tree-nav__item-title {
+        padding-left: 1.2rem;
+      }
+
+  }
+
