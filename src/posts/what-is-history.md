@@ -1,13 +1,12 @@
 ---
 layout: layouts/post.njk
-
 ---
 
 # 歴史とは何か  <span class="text-base pl-4">E.H.カー</span> 
 
 <span class="marginnote img-holder pb-10" >![歴史とは何か 新版 | E.H.カー, 近藤 和彦 |本 | 通販 | Amazon](https://m.media-amazon.com/images/I/710RV9dgoiL.jpg){width=45% .shadow-lg }</span >
 
-
+## 要旨
 
 
 19世紀の歴史家にとって，歴史とは客観的な事実の集まりであった．それゆえ彼らは，十分な史料を収集・批判的に吟味して事実を確定した後，その事実から何が結論付けられるかを議論すればいいと考えた．つまり，神聖なる事実と自由で議論の余地のある解釈を切り離したのだ．

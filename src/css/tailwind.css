@@ -47,7 +47,8 @@ article {
 /*  =======================  TOCのデザイン    ==========================================================================         */
 
 .js-toc {
-    font-size: 10px
+    font-size: 10px;
+    padding-right: 8px;
 }
 
 .toc-list{
@@ -232,4 +233,7 @@ stbl {
     @apply font-bold text-2xl
 }
 
-
+stbl2 {
+    @apply font-bold text-2xl bg-blue-200 py-[6px];
+    background-color: rgb(178, 213, 255);
+}
