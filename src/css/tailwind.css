@@ -18,6 +18,22 @@ tr,thead {
     @apply border-b
 }
 
+#home a {
+    color: #4371ba;
+    padding-bottom: 2px;
+    border-bottom: 1px solid;
+}
+
+#home li {
+    margin-bottom: 8px;
+}
+details[open] > summary{
+    display: block;
+}
+
+
+
+
 /* detailsの書き方　https://codepen.io/diomed/pen/gQyapY*/
 
 
