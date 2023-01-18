@@ -4,6 +4,19 @@
 
 
 
+table {
+    @apply min-w-full border text-center
+}
+th {
+    @apply text-sm font-medium text-gray-900 px-6 py-4 border-r
+}
+td {
+    @apply px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r
+}
+
+tr,thead {
+    @apply border-b
+}
 
 /* detailsの書き方　https://codepen.io/diomed/pen/gQyapY*/
 
@@ -34,35 +47,25 @@ article {
 /*  =======================  TOCのデザイン    ==========================================================================         */
 
 .js-toc {
-    color: #222120;
+    font-size: 10px
 }
 
 .toc-list{
     @apply pl-4;
 }
 
-.is-active-li > a {
-    color: #3366cc;
-}
-
-.is-active-li::marker {
-    content : "・";
-    color: #3366cc;
-    font-size: 1.5rem;
-}
-
 
 /*よくわからないが text-xlを入れておくことで，tocがガタつかなくなる*/
 .toc-list-item{
-    @apply text-xl pt-4;
+    @apply text-base pt-4;
 }
 
-.node-name--H2{
-    @apply text-xl;
+.toc-link {
+    display: inline-block;
+    width: 100%;
 }
-
-.node-name--H3{
-    @apply text-base;
+.toc-link:hover {
+    background-color: aliceblue;
 }
 
 
@@ -96,16 +99,6 @@ details > summary::-webkit-details-marker {
 
 /*  =======================  sidenoteのデザイン    ==========================================================================         */
 
-@media (max-width:1024px) {
-    .sidenote,
-    .marginnote{
-        display: block;
-        margin: 0.5rem 2.5%;
-        padding: 0 5%;
-        font-size: 0.85rem;
-    }
-}
-
 
 
 
@@ -136,13 +129,6 @@ details > summary::-webkit-details-marker {
         margin-top: 1rem;
     }
 
-    .marginnote.img-holder{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-
     .ContentOver{
         width: calc(100vw - 400px);
         max-width: 1040px;
@@ -153,12 +139,16 @@ details > summary::-webkit-details-marker {
 @media (min-width:1440px) {
     .sidenote,
     .marginnote {
-    margin-right: calc(-436.8px);/*- 100vw + 960px + 10vw - 5vw*/
-    width: 408px;
+    margin-right: calc(-386.8px);/*- 100vw + 960px + 10vw - 5vw = 436.8px*/
+    width: 328px; /*もともとは408 */
     }
+
+    .marginnote.img-holder{
+        margin-right: calc(-436.8px);
+        width: 408px;
+    }
+
 }
-
-
 
 .sidenote-number {
     counter-increment: sidenote-counter;
@@ -186,6 +176,32 @@ details > summary::-webkit-details-marker {
     font-size: 0.7em;
     font-weight: bold;
 }
+
+@media (max-width:1024px) {
+    .sidenote,
+    .marginnote{
+        font-size: 0.8rem;
+        display: block;
+        text-align: right;
+        width: 80%;
+        margin: 5px 0 5px auto;
+        line-height: 23px;
+
+    }
+    .marginnote.img-holder{
+        width: 100%;
+    }
+    
+}
+
+.marginnote.img-holder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
 
 
 /*  =======================  スマホ用のヘッダーのページタイトル ダサフォント==========================================================================         */

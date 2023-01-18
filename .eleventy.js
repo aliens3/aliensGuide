@@ -1,5 +1,7 @@
 
 const pluginRss = require("@11ty/eleventy-plugin-rss");
+const markdownIt = require('markdown-it');
+const markdownItAttrs = require('markdown-it-attrs');
 
 module.exports = function(eleventyConfig) {
 
@@ -8,6 +10,15 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/img");
+
+  const markdownItOptions = {
+    html: true,
+    breaks: true,
+    linkify: true
+  }
+  const markdownLib = markdownIt(markdownItOptions).use(markdownItAttrs).use(require('markdown-it-multimd-table')).use(require('markdown-it-anchor'),{ slugify: s => s });
+
+  eleventyConfig.setLibrary('md', markdownLib)
 
 
   return {

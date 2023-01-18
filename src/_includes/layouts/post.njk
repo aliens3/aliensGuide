@@ -1,12 +1,30 @@
 ---
 layout: layouts/base.njk
 ---
+<link href="/css/post.css" rel="stylesheet">
 
-
+<div class="fixed w-[300px] font-bold text-gray-600 border-[1px]  h-screen bg-white max-lg:hidden">
+        <div class="mx-auto border-b-[1px] text-center py-2">Outline</div>
+        <div class="js-toc top-[7.5rem] ">
+        </div>
+</div>
 <article class="max-w-[1440px] mx-auto">
-        <div class="max-w-[560px] my-20 mx-auto max-sm:px-3" id="grid-560px">
-        <div> 
+        <div class="max-w-[560px] pt-6 mx-auto max-sm:px-3 js-toc-content" id="grid-560px">
                 {{ content | safe }}
         </div>
-        </div>
 </article>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.min.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script>
+        tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.js-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.js-toc-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+        });
+</script>
