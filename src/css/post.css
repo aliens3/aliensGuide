@@ -36,9 +36,13 @@ article a {
 
 h1 {
     font-size: 32px;
-    padding-bottom: 2rem;
     padding-top: 2rem;
+}
 
+@media screen and (max-width: 767px){
+    h1 {
+        padding-bottom: 2rem;
+    }
 }
 
 h2,h3,h4 {
