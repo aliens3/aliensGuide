@@ -2,6 +2,7 @@
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const markdownIt = require('markdown-it');
 const markdownItAttrs = require('markdown-it-attrs');
+const { DateTime } = require("luxon");
 
 module.exports = function(eleventyConfig) {
 
@@ -10,9 +11,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/scripts");
   eleventyConfig.addPassthroughCopy("src/img");
-  eleventyConfig.addNunjucksFilter("myslug", function(item) { 
-    return item.replace(/(\r\n|\n|\r)/g, "").replace(/\\/g, "").replace(/"/g, "").replace(/\//g, "")
   
+  eleventyConfig.addFilter('htmlDateString', (dateObj) => {
+    return DateTime.fromJSDate(dateObj).toFormat('yyyy年LL月dd日 HH:mm');
   });
 
   eleventyConfig.addNunjucksFilter("mysearch",function (collection) {

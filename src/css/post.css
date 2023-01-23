@@ -42,7 +42,7 @@ h1 {
 
 @media screen and (max-width: 767px){
     h1 {
-        padding-bottom: 2rem;
+        padding-bottom: 1rem;
     }
 }
 
