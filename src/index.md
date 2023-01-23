@@ -2,11 +2,16 @@
 layout: layouts/home.njk
 ---
 
-<div>
 
-## Ⅰ.世界原理{.text-2xl .pb-2}
+<details class="mt-2 py-4 border-b border-grey-lighter">
+<summary>
 
-### 本編{.pb-2}
+## Ⅰ.世界原理{.text-2xl}
+</summary>
+
+<div class="max-xl:pl-2">
+
+### 本編{.py-2}
 準備中
 
 ### 番外編{.pt-6}
@@ -19,19 +24,19 @@ layout: layouts/home.njk
 
 </div>
 
+</div>    
 
-</div>
+</details>
 
 
 
-
-<hr class="lg:hidden my-8">
-
-<div>
+<details class="mt-2 py-4 border-b border-grey-lighter">
+<summary>
 
 ## Ⅱ.読書リスト{.text-2xl}
+</summary>
 
-
+<div class="max-xl:pl-2">
 
 <div class="py-2">
 
@@ -91,15 +96,35 @@ layout: layouts/home.njk
 - [アサッテの人](/posts/novel/アサッテの人) 
 </div>
 
+<div class="py-2">
+
+### 詩
+- [いくつかの詩](/posts/いくつかの詩)  
+
 </div>
 
-<hr class="lg:hidden my-8">
+</div>
+
+</details>
+
+
 
 <!---------------------------------------------- 第3コラム ----------------------------------------------->
-<div>
 
-## Ⅲ.考えたこと{.text-2xl .pb-2}
+<details class="mt-2 py-4 border-b border-grey-lighter">
+<summary>
+
+## Ⅲ.考えたこと{.text-2xl}
+</summary>
+
+<div class="max-lg:pl-2 pt-2">
+
 - [トロッコ問題への回答](/posts/notes/トロッコ問題への回答)
 - [自己実現的制度としての違法薬物](/posts/notes/自己実現的制度としての違法薬物) 
 
 </div>
+
+</details>
+
+
+

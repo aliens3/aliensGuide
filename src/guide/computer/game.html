@@ -1,0 +1,184 @@
+---
+layout: layouts/base.njk
+---
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div class="w-full flex justify-center mt-20">
+		<canvas id="can" width="1024" height="512" style="border: 8px ridge #aaa ;" class=""></canvas>
+	</div>
+	<script>
+		//定数設定
+		const PIXEL = 2;
+		const GAME_FPS = 1000/5;
+		const BALL_SIZE_WH = 4 * PIXEL;
+		const BAT_WIDTH = 48 * PIXEL;
+		const BAT_HEIGHT = 5 * PIXEL;
+
+		//実画面
+		let can = document.getElementById('can');
+		let con = can.getContext('2d');
+
+		//描画をなめらかにしない
+		con.mozimageSmoothingEnabled = false;
+		con.msimageSmoothingEnabled = false;
+		con.webkitimageSmoothingEnabled = false;
+		con.imageSmoothingEnabled = false;
+
+
+		//フレームレート維持
+		let frameCount = 0;
+		let startTime;
+
+		let ball_x = 10;
+		let ball_y = 10;
+		let vx = 1;
+		let vy = 1;
+		let bat_x = 120;
+		let bat_d = 1;
+
+		let score = 0;
+		let p_score = 0;
+		let hit=false;
+		let draw=true;
+
+		window.onload = function() {
+			startTime = performance.now();
+			mainLoop();
+		}
+
+		function pixel(x,y){
+			return [x * PIXEL , y * PIXEL]
+		}
+
+		function ball_draw(x,y){
+			con.fillRect(...pixel(x,y),BALL_SIZE_WH,BALL_SIZE_WH);
+		}
+
+		function bat_draw(x){
+			con.fillRect(...pixel(x,240),BAT_WIDTH,BAT_HEIGHT)
+		}
+
+		function set_color(c){
+			if(c==0){
+				con.fillStyle = "#ffffff";
+			}else if(c==1){
+				con.fillStyle = "#000000";
+			}else{
+				return
+			}
+		}
+
+		let keyb = {
+			"Left" : false,
+			"Right" : false
+		};
+		//キーボードが押されたときの処理
+		document.addEventListener("keydown",(e)=>{
+			if(e.keyCode == 37){
+				keyb.Left = true; 
+				keyb.Right = false
+				console.log("left")
+				
+			}else if(e.keyCode == 39){
+				keyb.Right = true;
+				keyb.Left = false; 
+				console.log("right")
+
+			}
+		})
+
+		function update_bat() {
+			//横移動の処理
+			if(keyb.Left){
+				bat_x -= 4;
+				if(bat_x < 0){
+					bat_x = 0
+				}
+			}
+			else if(keyb.Right) {
+				bat_x += 4;
+				if(bat_x > 512 - BAT_WIDTH/2){
+					bat_x = 512 - BAT_WIDTH/2
+				}
+			}
+		}
+
+		function update_ball(){
+
+			if(ball_x > 508){
+				vx = -1
+			}
+			if(ball_x < 4){
+				vx = 1
+			}
+
+			if(ball_y < 4){
+				vy = 1
+			}
+
+			if(ball_y > 236){
+				vy = -1
+				if(ball_x < bat_x | bat_x + BAT_WIDTH < ball_x){
+					vy=0
+					vx=0
+					hit =true
+				}else{
+					score += 1 
+				}
+			}
+			ball_x += vx* 5
+			ball_y += vy* 5
+			return hit
+
+		}
+
+
+		
+
+		function loop(){
+
+			set_color(0)
+			bat_draw(bat_x)
+			update_bat()
+			set_color(1)
+			bat_draw(bat_x)
+
+			set_color(0)
+			ball_draw(ball_x,ball_y)
+			const hit = update_ball()
+			set_color(1)
+			ball_draw(ball_x,ball_y)
+
+		}
+
+		function mainLoop() {
+			//今何フレーム目か算出
+			let nowTime = performance.now();
+			let nowFrame = (nowTime - startTime) / GAME_FPS;
+			
+			//現在のフレームがフレームカウントより大きければ更新・描画処理を実行
+			if (nowFrame > frameCount) {
+				loop();
+				frameCount++;
+			}
+			if (hit){
+				return 
+			}
+			requestAnimationFrame(mainLoop);
+		}
+
+
+
+
+	</script>
+	
+</body>
+</html>

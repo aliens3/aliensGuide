@@ -3,13 +3,20 @@ layout: layouts/base.njk
 ---
 <link href="/css/post.css" rel="stylesheet">
 
-<div class="fixed w-[300px] text-gray-900 border-[1px]  h-screen bg-white max-lg:hidden">
+<div class="flex menu -top-14 shadow-lg xl:hidden z-50" id="fixed-menu">
+        <img src="/img/menu.png" width="35px" height="35px" alt="" srcset="" class="py-2 ml-2" id="openSide">
+        <a href="/"><img src="/img/alien.png" width="35px" height="35px" alt="" srcset="" class="py-2 ml-2"></a>
+</div>
+
+
+<div class="fixed w-[300px] max-w-[90%] text-gray-900 border-[1px]  h-screen bg-white right-300px z-50" id="side-menu">
         <div class="mx-auto border-b-[1px] text-center py-2">Outline</div>
         <div class="js-toc top-[7.5rem] ">
         </div>
 </div>
-<article class="max-w-[1440px] mx-auto">
+<article class="max-w-[1440px] mx-auto" id="article">
         <div class="max-w-[560px] pt-6 mx-auto max-sm:px-3 js-toc-content pb-8" id="grid-560px">
+                <img src="/img/alien.png" width="60px" alt="" srcset="" class="mb-20">
                 {{ content | safe }}
         </div>
 </article>
@@ -27,4 +34,50 @@ layout: layouts/base.njk
         // For headings inside relative or absolute positioned containers within content.
         hasInnerContainers: true,
         });
+</script>
+
+
+<script>
+
+let onlytouch; 
+let openSidebar=false;
+
+if(screen.width < 1280) {
+        document.getElementById("article").addEventListener('touchstart', (ev)=>{
+    onlytouch = true
+}, {passive: true});
+
+document.getElementById("article").addEventListener('touchmove', (ev)=>{
+    onlytouch = false
+}, {passive: true});
+
+document.getElementById("article").addEventListener('touchend',(ev)=>{
+    if(onlytouch){
+        if(ev.target.tagName == "A"){return}
+        else if(openSidebar){
+            document.getElementById("side-menu").classList.toggle("right-0");
+            document.getElementById("side-menu").classList.toggle("right-300px");
+            document.getElementById("fixed-menu").classList.toggle("top-0");
+            document.getElementById("fixed-menu").classList.toggle("-top-14");
+            if(openSidebar){openSidebar=false}else{openSidebar=true}
+
+        }
+        else{
+            document.getElementById("fixed-menu").classList.toggle("top-0");
+            document.getElementById("fixed-menu").classList.toggle("-top-14");
+        }
+        //document.getElementById("fixed-menu").style.top = "0px";
+        
+    }
+}, {passive: true});
+
+document.getElementById("openSide").addEventListener("click",(ev)=>{
+    document.getElementById("side-menu").classList.toggle("right-0");
+    document.getElementById("side-menu").classList.toggle("right-300px");
+    if(openSidebar){openSidebar=false}else{openSidebar=true}
+})
+
+
+}
+
 </script>

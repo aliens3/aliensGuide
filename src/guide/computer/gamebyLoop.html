@@ -1,0 +1,216 @@
+---
+layout: layouts/base.njk
+---
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div class="w-full flex justify-center mt-20">
+		<canvas id="can" width="1024" height="512" style="border: 8px ridge #aaa ;" class=""></canvas>
+		<button id="advance">advance</button>
+	</div>
+	<div class="flex flex-col w-full my-8 ml-20">
+		<span id="loop"></span>
+		<span id="process"></span>
+		<span id="info"></span>
+		
+	</div>
+
+	<script>
+		//定数設定
+		const PIXEL = 2;
+		const GAME_FPS = 1000/5;
+		const BALL_SIZE_WH = 4 * PIXEL;
+		const BAT_WIDTH = 48 * PIXEL;
+		const BAT_HEIGHT = 5 * PIXEL;
+
+		//実画面
+		let can = document.getElementById('can');
+		let con = can.getContext('2d');
+
+		//描画をなめらかにしない
+		con.mozimageSmoothingEnabled = false;
+		con.msimageSmoothingEnabled = false;
+		con.webkitimageSmoothingEnabled = false;
+		con.imageSmoothingEnabled = false;
+
+
+		//フレームレート維持
+		let frameCount = 0;
+		let startTime;
+
+		let ball_x = 10;
+		let ball_y = 10;
+		let vx = 1;
+		let vy = 1;
+		let bat_x = 35;
+		let bat_d = 1;
+
+		let score = 0;
+		let p_score = 0;
+		let hit=false;
+		let draw=true;
+		let loop=0
+
+		window.onload = function() {
+			init();
+		}
+		document.getElementById("advance").addEventListener(
+			"click",advance
+		)
+
+		document.getElementById("back").addEventListener(
+			"click",back
+		)
+
+		function pixel(x,y){
+			return [x * PIXEL , y * PIXEL]
+		}
+
+		function ball_draw(x,y){
+			con.fillRect(...pixel(x,y),BALL_SIZE_WH,BALL_SIZE_WH);
+		}
+
+		function bat_draw(x){
+			con.fillRect(...pixel(x,240),BAT_WIDTH,BAT_HEIGHT)
+		}
+
+		function set_color(c){
+			if(c==0){
+				con.fillStyle = "#fff";
+			}else if(c==1){
+				con.fillStyle = "#000000";
+			}else if(c==2){
+				con.fillStyle = "#eee"
+			}
+		}
+
+		function update_ball(){
+
+			if(ball_x > 508){
+				vx = -1
+			}
+			if(ball_x < 4){
+				vx = 1
+			}
+
+			if(ball_y < 4){
+				vy = 1
+			}
+
+			if(ball_y > 236){
+				vy = -1
+				if(ball_x < bat_x | bat_x + BAT_WIDTH < ball_x){
+					vy=0
+					vx=0
+					hit =true
+				}else{
+					score += 1 
+				}
+			}
+			ball_x += vx* 5
+			ball_y += vy* 5
+			return hit
+
+		}
+
+		function update_bat() {
+			//横移動の処理
+			
+			bat_x += 4;
+			if(bat_x > 512 - BAT_WIDTH/2){
+				bat_x = 512 - BAT_WIDTH/2
+			}
+			
+		}
+
+		function sleep(ms) {
+    		return new Promise(resolve => setTimeout(resolve, ms));
+		}
+		function write_process(str){
+			document.getElementById("process").innerHTML= str
+		}
+
+		async function advance(){
+
+				document.getElementById("loop").innerHTML = loop
+				loop++;
+			
+				write_process("ボールを消す")
+				set_color(2)
+				ball_draw(ball_x,ball_y)
+				
+				document.getElementById("info").innerHTML=`${ball_x},${ball_y},${vx},${vy},${bat_x}`
+				await sleep(500)
+				write_process("ボールの位置,速度をアップデート")
+				update_ball()
+				
+				document.getElementById("info").innerHTML=`${ball_x},${ball_y},${vx},${vy},${bat_x}`
+				await sleep(500)
+				write_process("ボールを書く")
+				set_color(1)
+				ball_draw(ball_x,ball_y)
+				document.getElementById("info").innerHTML=`${ball_x},${ball_y},${vx},${vy},${bat_x}`
+				await sleep(500)
+				write_process("バットを消す")
+				set_color(2)
+				bat_draw(bat_x)
+				
+
+				document.getElementById("info").innerHTML=`${ball_x},${ball_y},${vx},${vy},${bat_x}`
+				await sleep(500)
+				write_process("バットの位置を更新")
+				update_bat()
+				
+
+				document.getElementById("info").innerHTML=`${ball_x},${ball_y},${vx},${vy},${bat_x}`
+				await sleep(500)
+				write_process("バットを書く")
+				set_color(1)
+				bat_draw(bat_x)
+				document.getElementById("info").innerHTML=`${ball_x},${ball_y},${vx},${vy},${bat_x}`
+				await sleep(500)
+
+
+
+		}
+
+		function back(){
+			[ball_x,ball_y,vx,vy] = prev.pop()
+			if(even){
+				set_color(1)
+				ball_draw(ball_x,ball_y)
+				bat_draw(bat_x)
+				even=false
+			}else{
+				set_color(0)
+				ball_draw(ball_x,ball_y)
+				bat_draw(bat_x)
+				ball_x = ball_x + vx*5
+				ball_y = ball_y + vy*5
+				bat_x = bat_x - 4
+				even=true
+			}
+		}
+
+		
+
+		function init(){
+			set_color(1)
+			ball_draw(ball_x,ball_y)
+			bat_draw(bat_x)
+		}
+
+
+
+
+	</script>
+	
+</body>
+</html>
