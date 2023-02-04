@@ -84,6 +84,8 @@ singele source of truth
 ## SOLIDの原則
 
 
+
+
 ## クラス プリミティブ
 
 <!-- 関数型 -->

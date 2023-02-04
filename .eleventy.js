@@ -57,3 +57,8 @@ module.exports = function(eleventyConfig) {
     dir: { input: 'src', output: '_site' }
   };
 };
+
+
+//    "@11ty/eleventy": "^1.0.2",
+// "@11ty/eleventy-plugin-rss": "^1.2.0",
+// "tailwindcss": "^3.2.4",
