@@ -38,18 +38,19 @@ article a {
 h1 {
     font-size: 32px;
     padding-top: 2rem;
+    padding-bottom: 1rem;
 }
 
-@media screen and (max-width: 767px){
-    h1 {
-        padding-bottom: 1rem;
-    }
-}
-
-h2,h3,h4 {
+h2 {
     font-size: 28px;
     padding-bottom: 1rem;
     padding-top: 3rem;
+}
+
+h3 {
+    font-size: 25px;
+    padding-bottom: 1rem;
+    padding-top: 2rem;
 }
 
 .dot-text { 

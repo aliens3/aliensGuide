@@ -18,9 +18,30 @@ layout: layouts/home.njk
 
 <div class="py-2">
 
+### 統計
+- [統計1](/guide/statistics/統計1)  
+- [統計2](/guide/statistics//統計2)
+- [統計3](/guide/statistics/統計3)
+
+</div>
+
+<div class="py-2">
+
+### コンピュータ
+- [コンピュータ](/guide/computer/コンピュータ)  
+- [インターネット](/guide/computer/インターネット)
+- [計算](/guide/computer/計算)
+- [プログラムTips](/guide/computer/プログラムTips)
+
+</div>
+
+
+<div class="py-2">
+
 ### 精神
 - [精神障害](/posts/精神障害)  
-- [行動療法・認知行動療法](/posts/行動療法・認知行動療法) 
+- [行動変容法](/posts/行動変容法)
+- [認知行動療法](/posts/認知行動療法)
 
 </div>
 
@@ -103,6 +124,13 @@ layout: layouts/home.njk
 
 </div>
 
+<div class="py-2">
+
+### 言語
+- [byの意味を知っているとは](/posts/byの意味を知っているとは)  
+
+</div>
+
 </div>
 
 </details>
@@ -121,7 +149,7 @@ layout: layouts/home.njk
 
 - [トロッコ問題への回答](/posts/notes/トロッコ問題への回答)
 - [自己実現的制度としての違法薬物](/posts/notes/自己実現的制度としての違法薬物) 
-
+- [道具主義でみる科学](/posts/notes/道具主義でみる科学)
 </div>
 
 </details>

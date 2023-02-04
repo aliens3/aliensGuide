@@ -11,12 +11,26 @@ layout: layouts/base.njk
 
 <div class="fixed w-[300px] max-w-[90%] text-gray-900 border-[1px]  h-screen bg-white right-300px z-50" id="side-menu">
         <div class="mx-auto border-b-[1px] text-center py-2">Outline</div>
-        <div class="js-toc top-[7.5rem] ">
+        <div class="js-toc sticky top-[7.5rem] overflow-y-scroll">
         </div>
 </div>
 <article class="max-w-[1440px] mx-auto" id="article">
         <div class="max-w-[560px] pt-6 mx-auto max-sm:px-3 js-toc-content pb-8" id="grid-560px">
                 <img src="/img/alien.png" width="60px" alt="" srcset="" class="mb-20">
+
+                {% if title %}
+                <h1> {{title}}</h1>
+                {% elif not skip %}
+                <h1> {{ page.fileSlug }} </h1>
+                {% endif %}
+
+
+                <div class="max-xl:pb-4 text-gray-600 text-[14px] leading-[26px] ">
+                    {% if created %}
+                    <div class="text-right" style="font-family : sans-serif"> <span>作成:</span> {{created | htmlDateString }} </div>
+                    {% endif %}
+                    <div class="text-right" style="font-family : sans-serif"> <span>更新:</span> {{page.date | htmlDateString }} </div>
+                </div>    
                 {{ content | safe }}
 
                 <div class="mt-12">
@@ -41,7 +55,12 @@ layout: layouts/base.njk
         });
 </script>
 
+<style>
 
+.js-toc{
+    height : calc(100vh - 41px);
+}
+</style>
 <script>
 
 let onlytouch; 
