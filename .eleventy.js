@@ -16,7 +16,7 @@ module.exports = function(eleventyConfig) {
     return DateTime.fromJSDate(dateObj).toFormat('yyyy年LL月dd日 HH:mm');
   });
 
-  eleventyConfig.addNunjucksFilter("mysearch",function (collection) {
+  /*eleventyConfig.addNunjucksFilter("mysearch",function (collection) {
     // what fields we'd like our index to consist of
     const posts = [];
     // loop through each page and add it to the index
@@ -33,7 +33,7 @@ module.exports = function(eleventyConfig) {
     });
   
     return JSON.stringify(posts)
-  });
+  });*/
 
   const markdownItOptions = {
     html: true,
