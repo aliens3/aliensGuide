@@ -11,6 +11,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/img");
+  eleventyConfig.addPassthroughCopy("src/lib");
+  eleventyConfig.addPassthroughCopy("src/reveal-imgs");
+
   
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {
     return DateTime.fromJSDate(dateObj).toFormat('yyyy年LL月dd日 HH:mm');
