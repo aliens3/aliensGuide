@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "eleventy --serve && tailwindcss -i ./src/css/tailwind.css -o ./_site/css/style.css --watch",
+    "dev": "npx @11ty/eleventy --serve & npx tailwindcss -i ./src/css/tailwind.css -o ./_site/css/style.css --watch",
     "build": "npx @11ty/eleventy && npx tailwindcss -i ./src/css/tailwind.css -o ./_site/css/style.css"
   },
   "devDependencies": {
