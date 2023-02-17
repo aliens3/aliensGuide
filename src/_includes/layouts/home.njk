@@ -3,8 +3,7 @@ layout: layouts/base.njk
 ---
 
 <article class="max-w-[1440px] mx-auto xl:grid grid-cols-[600px_1fr] gap-x-4">
-
-    <div class="max-w-full md:ml-16 mx-auto  max-sm:px-3 my-6 " id="home">
+    <div class="md:ml-16 mx-auto  max-sm:px-3 my-6 " id="home">
     <header class="xl:pt-8 pt-4">
         <div class="flex items-center"><h1 class="text-2xl">エイリアンズガイドTO世界</h1><img src="/img/alien.png" alt="" class="w-10"></div>
         <a href="/このサイトについて">このサイトについて</a>
@@ -14,8 +13,7 @@ layout: layouts/base.njk
         {{ content | safe }}
         </div>
     </div>
-    <div class="h-[99vh] grid justify-end items-center max-xl:hidden"><img src="/img/DALL·E 2023-02-12 22.57.59 - Egyptian woman predicts when the flood will happen,digital art.png" alt="" class="z-0 max-h-[100vh]" ></div>
-
+    <div class="h-[99.5vh] grid justify-end items-center max-xl:hidden"><img src="/img/DALL·E 2023-02-12 22.55.59 - Young woman wondering what time it is in the style of vaporwave.png" alt="" class="z-0 max-h-[100vh] fixed" ></div>
 </article>
 
 
@@ -24,9 +22,10 @@ details[disabled] summary{
 pointer-events: none; /* prevents click events */
 }
 details{
-    padding-left: 24px;
     margin: 0.5rem 0;
+    padding-left: 8px;
 }
+
 summary {
     list-style: outside;
 }
