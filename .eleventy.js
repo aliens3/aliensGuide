@@ -14,6 +14,14 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/lib");
   eleventyConfig.addPassthroughCopy("src/reveal-imgs");
 
+  function sortByOrder(values) {
+    let vals = [...values];     // this *seems* to prevent collection mutation...
+    return vals.sort((a, b) => Math.sign(a.data.order - b.data.order));
+  }
+
+  eleventyConfig.addFilter("sortByOrder", sortByOrder);
+    
+
   
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {
     return DateTime.fromJSDate(dateObj).toFormat('yyyy年LL月dd日 HH:mm');

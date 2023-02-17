@@ -19,10 +19,13 @@ layout: layouts/home.njk
 <div class="py-2">
 
 ### 統計
-- [統計1](/guide/statistics/統計1)  
-- [統計2](/guide/statistics//統計2)
-- [統計3](/guide/statistics/統計3)
 
+
+<ul>
+{%- for post in collections.stat | sortByOrder -%}
+  <li><a href={{ post.url }} >{{post.data.title}}</a></li>
+{%- endfor -%}
+</ul>
 </div>
 
 <div class="py-2">
@@ -67,14 +70,10 @@ layout: layouts/home.njk
 - [哲学入門3-哲学史 with 西洋哲学史要](/posts/philosophy/哲学入門3-哲学史)  
 - [仏教入門 with 仏教思想のゼロポイント](/posts/philosophy/仏教入門)  
 - [正義と善入門 with 共生と正義](/posts/philosophy/正義論)
+- [饗宴](/posts/philosophy/饗宴)
 
 <details>
-    <summary class="text-sm">もっと見る...</summary>
-
-- [饗宴](/posts/philosophy/饗宴)
-</details>
-
-
+<summary >哲学</summary>がが</details>
 </div>
 
 
