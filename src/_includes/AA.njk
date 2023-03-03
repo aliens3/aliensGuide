@@ -1,0 +1,48 @@
+{% if p.t == "right" %}
+  <div class="flex py-3 max-md:items-end max-md:flex-col">
+    <div class="pr-4 leading-5 md:pt-4" style="font-family: sans-serif">
+            {{p.p | md | safe}}
+    </div>
+    <pre class="aahub AA w-fit">
+    {{AA[p.c] | safe}}
+    </pre>
+</div>
+{% endif %}
+
+{% if p.t == "left" %}
+
+<div class="md:flex py-3 max-md:flex-col">
+    <div class="leading-5 md:pt-4 order-1 md:order-2" style="font-family: sans-serif">
+        {{p.p | md | safe}}
+    </div>
+    <pre class="aahub AA w-fit">
+    {{AA[p.c] | safe}}
+    </pre>
+</div>
+
+{% endif %}
+
+{% if p.t == "raw" %}
+
+{{p.p | safe}}
+
+{% endif %}
+
+{% if p.t == "aut" %}
+<div class="flex max-md:flex-col pt-3">
+<pre style="font-size: 14px; line-height : 16px" style="font-family: system-ui">
+   ___ 
+  /  .\ 
+ /  =__|
+/    ||
+作者 
+</pre>
+<div class="pl-4 aut">
+    {{p.p | md | safe}}
+</div>
+</div>
+{% endif %}
+
+{% if p.t == "title" %}
+<div class="mb-8 md:mb-4 w-full" style="font-family: sans-serif;"> {{p.p}} === === === === === === === === === ===<span class="max-md:hidden"> === === >></span></div>
+{% endif %}

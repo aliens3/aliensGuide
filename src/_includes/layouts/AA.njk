@@ -1,0 +1,55 @@
+---
+layout: layouts/base.njk
+---
+
+
+<style>
+@font-face {
+  font-family: aahub;
+  src: url("/lib/aahub_light.woff2") format("woff2"),
+    url("/lib/aahub_light.woff") format("woff"),
+    url("/lib/aahub_light.ttf") format("ttf");
+  font-display: swap;
+}
+
+.aahub {
+  font-family: aahub;
+}
+
+.AA {
+  font-size: 14px;
+  line-height: 15px;
+}
+a {
+    color: #4371ba;
+}
+
+ul {
+  list-style: outside disc;
+  padding-left : 16px;
+  line-height : 24px;
+  padding-top : 8px;
+  padding-bottom: 8px;
+}
+
+ol {
+    list-style: outside decimal;
+    padding-left : 19px;
+    line-height : 24px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.aut p {
+    line-height : 24px;
+    padding-top: 12px;
+}
+</style>
+
+<div class="w-[768px] mx-auto max-w-full px-4">
+<h1 class="text-3xl mt-12 font-bold"> {{series}}</h1>
+<h2>{{title}}</h2>
+
+{{content | safe}}
+
+</div>

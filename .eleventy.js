@@ -1,13 +1,20 @@
+const toml = require("toml");
 
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const markdownIt = require('markdown-it');
+const markdownItOptions = {
+  html: true,
+  breaks: true,
+  linkify: true
+}
 const markdownItAttrs = require('markdown-it-attrs');
+const markdownLib = markdownIt(markdownItOptions).use(markdownItAttrs).use(require('markdown-it-multimd-table')).use(require('markdown-it-anchor'),{ slugify: s => s });
 const { DateTime } = require("luxon");
 
 module.exports = function(eleventyConfig) {
 
   eleventyConfig.addPlugin(pluginRss);
-
+  eleventyConfig.addDataExtension("toml", contents => toml.parse(contents));
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/img");
@@ -21,7 +28,9 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter("sortByOrder", sortByOrder);
     
-
+  eleventyConfig.addFilter('md', (string) => {
+    return markdownLib.render(string)
+  });
   
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {
     return DateTime.fromJSDate(dateObj).toFormat('yyyy年LL月dd日 HH:mm');
@@ -46,13 +55,7 @@ module.exports = function(eleventyConfig) {
     return JSON.stringify(posts)
   });*/
 
-  const markdownItOptions = {
-    html: true,
-    breaks: true,
-    linkify: true
-  }
-  const markdownLib = markdownIt(markdownItOptions).use(markdownItAttrs).use(require('markdown-it-multimd-table')).use(require('markdown-it-anchor'),{ slugify: s => s });
-
+  
   eleventyConfig.setLibrary('md', markdownLib)
   eleventyConfig.setFrontMatterParsingOptions({
     excerpt: true,
