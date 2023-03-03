@@ -1,6 +1,7 @@
 ---
 layout: layouts/post.njk
-title: byの意味を知っているとは何を知っていることなのか
+title: byの意味を知っているとは何を知っていることなのか(途中)
+tags : other
 ---
 <link rel="stylesheet" href="https://unpkg.com/treeflex/dist/css/treeflex.css">
 

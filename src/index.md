@@ -11,28 +11,15 @@ layout: layouts/home.njk
 {%- for post in collections.stat | sortByOrder -%}
   <li><a href={{ post.url }} >{{post.data.title}}</a></li>
 {%- endfor -%}
-
 </ul>
 
-</details>
-
-
-<details >
-<summary class="text-xl">コンピュータ</summary>
-<ul>
-
-{%- for post in collections.stat | sortByOrder -%}
-  <li><a href={{ post.url }} >{{post.data.title}}</a></li>
-{%- endfor -%}
-
-</ul>
 </details>
 
 <details>
-<summary class="text-xl">精神</summary>
+<summary class="text-xl">精神(途中)</summary>
 <ul>
 
-{%- for post in collections.stat | sortByOrder -%}
+{%- for post in collections.psych | sortByOrder -%}
   <li><a href={{ post.url }} >{{post.data.title}}</a></li>
 {%- endfor -%}
 
@@ -49,7 +36,7 @@ layout: layouts/home.njk
 <summary class="text-xl">哲学</summary>
 <ul class="list-disc">
 
-{%- for post in collections.stat | sortByOrder -%}
+{%- for post in collections.phil | sortByOrder -%}
   <li><a href={{ post.url }} >{{post.data.title}}</a></li>
 {%- endfor -%}
 
@@ -59,9 +46,9 @@ layout: layouts/home.njk
 
 <details>
 <summary class="text-xl">小論</summary>
-<ul>
+<ul class="list-disc">
 
-{%- for post in collections.stat | sortByOrder -%}
+{%- for post in collections.essay | sortByOrder -%}
   <li><a href={{ post.url }} >{{post.data.title}}</a></li>
 {%- endfor -%}
 
@@ -71,9 +58,9 @@ layout: layouts/home.njk
 
 <details>
 <summary class="text-xl">その他</summary>
-<ul>
+<ul class="list-disc">
 
-{%- for post in collections.stat | sortByOrder -%}
+{%- for post in collections.other | sortByOrder -%}
   <li><a href={{ post.url }} >{{post.data.title}}</a></li>
 {%- endfor -%}
 
@@ -85,9 +72,9 @@ layout: layouts/home.njk
 
 <details class="border-b border-grey-lighter py-4 pl-6">
 <summary class="text-2xl">考えたこと</summary>
-<ul>
+<ul class="list-disc">
 
-{%- for post in collections.stat | sortByOrder -%}
+{%- for post in collections.notes | sortByOrder -%}
   <li><a href={{ post.url }} >{{post.data.title}}</a></li>
 {%- endfor -%}
 
